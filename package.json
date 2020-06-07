@@ -2,9 +2,9 @@
   "name": "yukii",
   "version": "1.0.1",
   "description": "A bot for Discord",
-  "main": "main.js",
+  "main": "Yukki.js",
   "scripts": {
-    "test": "node main.js"
+    "test": "node Yukii.js"
   },
   "keywords": [
     "discord",

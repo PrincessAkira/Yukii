@@ -56,6 +56,7 @@ client.on('message', message => {
       .setColor('#ff0000')
       .setTitle(':wrench:  **Bot Statistics** :wrench:')
       .addField('**Name**', `**${bot_info.Name}**`)
+      .addField('**Author**', '**Test123**')
       .addField('**Servercount**', `**${client.guilds.resolve.length} Servers**`)
       .addField('**DiscordJS**', `**${dependencies['discord.js']}**`)
       .addField('**NodeJS**', `**${bot_info.NodeJS}**`)
