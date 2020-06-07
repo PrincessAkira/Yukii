@@ -1,0 +1,9 @@
+.now
+Procfile
+_config.yml
+/node_modules
+/node_modules/*
+package-lock.json
+/.vscode
+settings.json
+.eslintrc.json
