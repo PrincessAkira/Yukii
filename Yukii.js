@@ -23,10 +23,12 @@ client.on('disconnect', () => {
 })
 
 client.on('message', message => {
-  if (message.content === PREFIX + 'test2') {
+  if (message.content === PREFIX + 'test') {
     message.channel.send('```' + 'This is just a test command' + '```')
   }
 })
+
+// /--- Information Commands ---\ \\
 
 client.on('message', message => {
   if (message.content === PREFIX + 'dependencies') {
