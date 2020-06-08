@@ -1,74 +1,33 @@
-const Discord = require('discord.js')
-const client = new Discord.Client()
+const Discord = require('discord.js');
+const fs = require('fs');
+const yukii = new Discord.Client();
+yukii.commands = new Discord.Collection();
 const {
   PREFIX,
-  bot_info,
   token
-} = require('./settings.json')
-const {
-  dependencies
-} = require('./package.json')
+} = require('./settings.json');
 
-client.once('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`)
-  client.user.setActivity('in ' + `${client.guilds.resolve.length} Servers ` + '| Prefix: -y')
-})
+// /--- Connect-Path ---\ \\
 
-client.login(token)
+yukii.login(token);
 
-// this will reconnect the bot when it gets disconnected
+yukii.on('disconnect', () => {
+  yukii.login(token);
+});
 
-client.on('disconnect', () => {
-  client.login(token)
-})
+for (const file of fs.readdirSync('./cmds/components').filter(file => file.endsWith('.js'))) {
+  yukii.commands.set(yukii.name, yukii);
+  yukii.commands.set(require(`./cmds/components/${file}`).name, require(`./cmds/components/${file}`));
+}
 
-client.on('message', message => {
-  if (message.content === PREFIX + 'test') {
-    message.channel.send('```' + 'This is just a test command' + '```')
-  }
-})
+yukii
 
-// /--- Information Commands ---\ \\
+  .on('message', message => {
+    if (!message.content.startsWith(PREFIX) || message.author.bot || message.channel.type === 'DM') return;
+    const args = message.content.slice(PREFIX.length).split(/ +/);
+    const cmd = args.shift().toLowerCase();
+    if (!yukii.commands.has(cmd)) return;
+    try {yukii.commands.get(cmd).run(yukii, message, args)}catch(err){console.error(err) }
+  })
 
-client.on('message', message => {
-  if (message.content === PREFIX + 'dependencies') {
-    const StatsEmbed = new Discord.MessageEmbed()
-      .setColor('#ff0000')
-      .setTitle(':wrench:  **Dependencies** :wrench:')
-      .addField('**DiscordJS**', `**${dependencies['discord.js']}**`)
-      .addField('**Moment**', `**${dependencies.moment}**`)
-      .addField('**Moment-duration-format**', `**${dependencies['moment-duration-format']}**`)
-      .addField('**Eslint**', `**${dependencies.eslint}**`)
-      .addField('**Standard**', `**${dependencies.standard}**`)
-
-    message.channel.send(StatsEmbed)
-  }
-})
-
-client.on('message', message => {
-  if (message.content === PREFIX + 'info') {
-    const totalSeconds = (client.uptime / 1000) % 3600
-    const days = Math.floor(totalSeconds / 86400)
-    const hours = Math.floor(totalSeconds / 3600)
-    const minutes = Math.floor(totalSeconds / 60)
-    const seconds = totalSeconds % 60
-    const ram = process.memoryUsage().heapUsed / 1024 / 1024
-
-    const StatsEmbed = new Discord.MessageEmbed()
-      .setColor('#ff0000')
-      .setTitle(':wrench:  **Bot Statistics** :wrench:')
-      .addField('**Name**', `**${bot_info.Name}**`)
-      .addField('**Author**', '**Test123**')
-      .addField('**Servercount**', `**${client.guilds.resolve.length} Servers**`)
-      .addField('**DiscordJS**', `**${dependencies['discord.js']}**`)
-      .addField('**NodeJS**', `**${bot_info.NodeJS}**`)
-      .addField('**RAM Usage**', `**${ram} MB**`)
-      .setDescription('**Uptime ::**')
-      .addField('**Days**', `**${days}**`)
-      .addField('**Hours**', `**${hours}**`)
-      .addField('**Minutes**', `**${minutes}**`)
-      .addField('**Seconds**', `**${seconds}**`)
-
-    message.channel.send(StatsEmbed)
-  }
-})
+  .once('ready', () => { console.log(`Logged in as ${yukii.user.tag}!`); yukii.user.setActivity('in ' + `${yukii.guilds.resolve.length} Servers ` + '| Prefix: -y') });

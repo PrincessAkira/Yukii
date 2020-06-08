@@ -6,4 +6,5 @@ _config.yml
 package-lock.json
 /.vscode
 settings.json
+old.js
 .eslintrc.json
