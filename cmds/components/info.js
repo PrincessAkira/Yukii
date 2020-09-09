@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const Discord = require('discord.js')
 const {
   bot_info
 } = require('./../../settings.json')
@@ -13,15 +13,15 @@ module.exports = {
   category: 'misc',
   guildOnly: true,
 
-  execute(yukii, message) {
+  execute (yukii, message) {
 
     const totalSeconds = (yukii.uptime / 1000) % 3600
     const days = Math.floor(totalSeconds / 86400)
     const hours = Math.floor(totalSeconds / 3600)
     const minutes = Math.floor(totalSeconds / 60)
     const seconds = totalSeconds % 60
-    const ram = process.memoryUsage().heapUsed / 1024 / 1024
-
+    const roundedseconds = Math.round(seconds)
+    const ram = (process.memoryUsage().rss / 1024 / 1024).toFixed(0)
 
     const StatsEmbed = new Discord.RichEmbed()
       .setColor('#ff0000')
@@ -32,16 +32,13 @@ module.exports = {
       .addField('**Servercount**', `**${yukii.guilds.size} Servers**`)
       .addField('**DiscordJS**', `**${dependencies['discord.js']}**`)
       .addField('**NodeJS**', `**${bot_info.NodeJS}**`)
-      .addField('**RAM Usage**', `**${ram} MB**`)
+      .addField('**RAM Usage**', `**${ram} GB**`)
       .addField('**Uptime**', `** **`)
       .addField('**Days**', `**${days}**`)
       .addField('**Hours**', `**${hours}**`)
       .addField('**Minutes**', `**${minutes}**`)
-      .addField('**Seconds**', `**${seconds}**`)
+      .addField('**Seconds**', `**${roundedseconds}**`)
       .setFooter(`Requested by ${message.author.tag}`)
-       message.channel.send(StatsEmbed)
-
+    message.channel.send(StatsEmbed)
   }
-
-
 }

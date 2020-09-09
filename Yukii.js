@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const fs = require('fs')
+const snekfetch = require('snekfetch');
 const yukii = new Discord.Client({
   disableEveryone: true
 })
@@ -42,6 +43,14 @@ yukii
 
   .once('ready', () => {
     console.log(`Logged in as ${yukii.user.tag}!`)
-    yukii.user.setActivity('Bot recode! ' + '| Prefix: -k');
+    yukii.user.setActivity('Bot recode! ' + '| -k help');
     // yukii.user.setActivity('in ' + `${yukii.guilds.size} Servers ` + '| Prefix: -k')
   })
+
+/// API Stuff
+/*
+snekfetch.post(`https://space-bot-list.xyz/api/bots/"apiKey"`)
+  .set('Authorization', "your sbl api key")
+  .send({ guilds: yukii.guilds.size, users: yukii.users.size })
+  .then(req => req.body);
+  */
