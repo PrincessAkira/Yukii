@@ -21,7 +21,6 @@ module.exports = {
       .addField('**Eslint**', `**${dependencies.eslint}**`)
       .addField('**Torrent-Grabber**', `**${dependencies["torrent-grabber"]}**`)
       .addField('**Standard**', `**${dependencies.standard}**`)
-      .setFooter(`Requested by ${message.author.tag}`);
 
         return yukii.channel.send(StatsEmbed)
   }
