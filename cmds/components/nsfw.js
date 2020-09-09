@@ -1,13 +1,14 @@
+
+
 module.exports = {
 
-  func: (message) => {
+  NSFWTrue: (message) => {
     {
       if (message.channel.nsfw === true) {
-      return(1);
-      } else {
+        return true;
+      } else if (message.channel.nsfw === false) {
         return message.channel.send(':gear: Please use this Command in an NSFW-Channel :gear:')
       }
     }
   }
-}
-
+};

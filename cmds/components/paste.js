@@ -5,7 +5,7 @@ module.exports = {
 
   description: 'Null',
   name: 'paste',
-  category: 'Misc',
+  category: 'misc',
   guildOnly: true,
 
   async execute (yukii, message, args) {

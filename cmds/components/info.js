@@ -10,7 +10,7 @@ module.exports = {
 
   name: 'info',
   description: 'Null',
-  category: 'Misc',
+  category: 'misc',
   guildOnly: true,
 
   execute(yukii, message) {
@@ -26,7 +26,7 @@ module.exports = {
     const StatsEmbed = new Discord.RichEmbed()
       .setColor('#ff0000')
       .setTitle(':wrench:  **Bot Statistics** :wrench:')
-      .setThumbnail('https://camo.githubusercontent.com/03757a303777b6b2908fb8a64563d9c68d26ebfb/68747470733a2f2f692e696d6775722e636f6d2f4e3172374832472e706e67')
+      .setThumbnail('https://i.imgur.com/SL1L9Bn.png')
       .addField('**Name**', `**${bot_info.Name}**`)
       .addField('**Author**', `**Yukii#6969**`)
       .addField('**Servercount**', `**${yukii.guilds.size} Servers**`)
@@ -38,6 +38,7 @@ module.exports = {
       .addField('**Hours**', `**${hours}**`)
       .addField('**Minutes**', `**${minutes}**`)
       .addField('**Seconds**', `**${seconds}**`)
+      .setFooter(`Requested by ${message.author.tag}`)
        message.channel.send(StatsEmbed)
 
   }

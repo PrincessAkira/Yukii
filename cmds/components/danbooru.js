@@ -6,10 +6,10 @@ module.exports = {
 
   description: 'Null',
   name: 'danbooru',
-  category: 'Fun',
+  category: 'fun',
   guildOnly: true,
 
-  async execute (yukii, message, args) {
+  async execute (yukii, message, args, errormess) {
     if (message.channel.nsfw === true) {
         booru.posts({
           random: 'true',
@@ -18,7 +18,7 @@ module.exports = {
           const index = Math.floor(Math.random() * posts.length)
           const post = posts[index]
           const url = booru.url(post.large_file_url)
-          const embed = new Discord.RichEmbed()
+          const embed = new new Discord.RichEmbed()
             .setDescription(':white_check_mark:  ***Here are the Results*** :white_check_mark: ')
             .setColor('#ff0000')
             .addField('**Tag**', `**${args[0]}**`)
@@ -26,7 +26,7 @@ module.exports = {
           return message.channel.send(embed);
         })
       } else {
-        return message.channel.send(':gear: ***Please use this in an NSFW Channel*** :gear:');
+        return errormess;
       }
   }
 }

@@ -5,7 +5,7 @@ module.exports = {
 
   description: 'Null',
   name: 'restart',
-  category: 'Owner',
+  category: 'owner',
   ownerOnly: true,
   guildOnly: true,
 
