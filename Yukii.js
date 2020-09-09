@@ -31,14 +31,9 @@ yukii
     if (!message.content.startsWith(PREFIX) || message.author.bot || message.channel.type === 'DM') return
     const args = message.content.slice(PREFIX.length).split(/ +/)
     const cmd = args.shift().toLowerCase()
-    const errormess = new Discord.RichEmbed()
-      .setColor('#ff0000')
-      .setTitle(':warning:  **Error** :warning:')
-      .setDescription('**Please specify the Command and try again**')
-      .setThumbnail('https://i.imgur.com/SL1L9Bn.png')
     if (!yukii.commands.has(cmd)) return
     try {
-      yukii.commands.get(cmd).execute(yukii, message, args, errormess)
+      yukii.commands.get(cmd).execute(yukii, message, args)
     } catch (err) {
       console.error(err)
       message.channel.send('```There was an error: ' + err + '```')
