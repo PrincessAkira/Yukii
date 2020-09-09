@@ -42,6 +42,6 @@ yukii
 
   .once('ready', () => {
     console.log(`Logged in as ${yukii.user.tag}!`)
-    yukii.user.setActivity('Bot has been recoded ' + '| Prefix: -k');
+    yukii.user.setActivity('Bot recode! ' + '| Prefix: -k');
     // yukii.user.setActivity('in ' + `${yukii.guilds.size} Servers ` + '| Prefix: -k')
   })
