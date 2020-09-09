@@ -10,6 +10,13 @@ module.exports = {
   guildOnly: true,
 
   async execute (yukii, message, args) {
+
+    const errormess = new Discord.RichEmbed()
+      .setColor('#ff0000')
+      .setTitle(':warning:  **Error** :warning:')
+      .setDescription('**Please use this Command in an NSFW Channel**')
+      .setThumbnail('https://i.imgur.com/SL1L9Bn.png')
+
     if (message.channel.nsfw === true) {
       booru.posts({
         random: 'true',
@@ -25,13 +32,8 @@ module.exports = {
           .setImage(url)
         return message.channel.send(embed)
       })
-    } else if (message.channel.nsfw === false) {
-      const errormess = new Discord.RichEmbed()
-        .setColor('#ff0000')
-        .setTitle(':warning:  **Error** :warning:')
-        .setDescription('**Please specify the Command and try again**')
-        .setThumbnail('https://i.imgur.com/SL1L9Bn.png')
-      return errormess
+    } if (message.channel.nsfw === false) {
+      return message.channel.send(errormess)
     }
   }
 }
