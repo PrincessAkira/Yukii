@@ -31,9 +31,14 @@ yukii
     if (!message.content.startsWith(PREFIX) || message.author.bot || message.channel.type === 'DM') return
     const args = message.content.slice(PREFIX.length).split(/ +/)
     const cmd = args.shift().toLowerCase()
+    const errormess = new Discord.RichEmbed()
+      .setColor('#ff0000')
+      .setTitle(':warning:  **Error** :warning:')
+      .setDescription('**Please specify the Command and try again**')
+      .setThumbnail('https://i.imgur.com/SL1L9Bn.png')
     if (!yukii.commands.has(cmd)) return
     try {
-      yukii.commands.get(cmd).execute(yukii, message, args)
+      yukii.commands.get(cmd).execute(yukii, message, args, errormess)
     } catch (err) {
       console.error(err)
       message.channel.send('```There was an error: ' + err + '```')
@@ -43,5 +48,5 @@ yukii
   .once('ready', () => {
     console.log(`Logged in as ${yukii.user.tag}!`)
     yukii.user.setActivity('Bot has been recoded ' + '| Prefix: -k');
-   // yukii.user.setActivity('in ' + `${yukii.guilds.size} Servers ` + '| Prefix: -k')
+    // yukii.user.setActivity('in ' + `${yukii.guilds.size} Servers ` + '| Prefix: -k')
   })
