@@ -16,7 +16,6 @@ module.exports = {
                 .setColor('#ff0000')
                 .setTitle(`:camera:  ${tagged.tag}'s Avatar :camera:`)
                 .setImage(`${tagged.avatarURL}`, true)
-              .setFooter(`Requested by ${message.author.tag}`)
             return yukii.channel.send(SuccessBedAvatar);
 
         }
