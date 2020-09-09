@@ -25,7 +25,7 @@ module.exports = {
             .setImage(url)
           return message.channel.send(embed);
         })
-      } else {
+      } else if (message.channel.nsfw === false) {
         return errormess;
       }
   }
