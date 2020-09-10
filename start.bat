@@ -1,1 +1,1 @@
-node Yukii.js
+git add *

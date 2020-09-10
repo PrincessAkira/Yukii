@@ -11,7 +11,7 @@ module.exports = {
   guildOnly: true,
 
   execute(message, yukii) {
-    const StatsEmbed = new Discord.RichEmbed()
+    const StatsEmbed = new Discord.MessageEmbed()
       .setColor('#ff0000')
       .setThumbnail('https://i.imgur.com/SL1L9Bn.png')
       .setTitle(':wrench:  **Dependencies** :wrench:')
@@ -19,7 +19,7 @@ module.exports = {
       .addField('**Moment**', `**${dependencies.moment}**`)
       .addField('**Moment-duration-format**', `**${dependencies['moment-duration-format']}**`)
       .addField('**Eslint**', `**${dependencies.eslint}**`)
-      .addField('**Torrent-Grabber**', `**${dependencies["torrent-grabber"]}**`)
+      .addField('**Torrent-Grabber**', `**${dependencies['torrent-grabber']}**`)
       .addField('**Standard**', `**${dependencies.standard}**`)
 
         return yukii.channel.send(StatsEmbed)

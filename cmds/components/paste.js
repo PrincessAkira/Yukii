@@ -10,6 +10,6 @@ module.exports = {
 
   async execute (yukii, message, args) {
     const link = (await haste.post(args.join(' ')))
-    message.channel.send('Here is your Link: ' + link).then(console.log(message.channel.send));
+    message.channel.send('Here is your Link: ' + link)
   }
 }

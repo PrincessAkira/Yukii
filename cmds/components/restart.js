@@ -1,7 +1,4 @@
-const {
-  token
-} = require('./../../settings.json')
-const Discord = require('discord.js')
+const write = require('fs').writeFileSync
 
 module.exports = {
 
@@ -12,13 +9,13 @@ module.exports = {
   guildOnly: true,
 
   async execute (yukii, message) {
-
-    console.log('Performing Restart')
-    const Restart = new Discord.RichEmbed()
-      .setColor('#ff0000')
-      .setTitle(':gear:**Performing Restart**:gear: ')
-      .setThumbnail('https://camo.githubusercontent.com/03757a303777b6b2908fb8a64563d9c68d26ebfb/68747470733a2f2f692e696d6775722e636f6d2f4e3172374832472e706e67')
-    message.channel.send(Restart).then(console.clear())
-    yukii.destroy().then(yukii.login(token))
+    if (['202740603790819328'].indexOf(message.author.id) === -1) return message.channel.send(`Access has been denied \`${message.author.tag}\`. \nReason: \nDo not have correct permission.`)
+    let m = await message.channel.send('**Restarting. . .**')
+    await message.client.user.setActivity('Restarting. . .')
+    write('./restartMessage', JSON.stringify({
+      channel: m.channel.id,
+      message: m.id
+    }), 'utf8')
+    process.exit()
   }
 }

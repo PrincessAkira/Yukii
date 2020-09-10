@@ -15,30 +15,28 @@ module.exports = {
 
   execute (yukii, message) {
 
-    const totalSeconds = (yukii.uptime / 1000) % 3600
-    const days = Math.floor(totalSeconds / 86400)
-    const hours = Math.floor(totalSeconds / 3600)
-    const minutes = Math.floor(totalSeconds / 60)
-    const seconds = totalSeconds % 60
-    const roundedseconds = Math.round(seconds)
+    let totalSeconds = (yukii.uptime / 1000)
+    let days = Math.floor(totalSeconds / 86400)
+    let hours = Math.floor(totalSeconds / 3600)
+    totalSeconds %= 3600
+    let minutes = Math.floor(totalSeconds / 60)
+    let seconds = totalSeconds % 60
     const ram = (process.memoryUsage().rss / 1024 / 1024).toFixed(0)
+    let uptime = `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`
 
-    const StatsEmbed = new Discord.RichEmbed()
+    const StatsEmbed = new Discord.MessageEmbed()
       .setColor('#ff0000')
       .setTitle(':wrench:  **Bot Statistics** :wrench:')
       .setThumbnail('https://i.imgur.com/SL1L9Bn.png')
       .addField('**Name**', `**${bot_info.Name}**`)
-      .addField('**Author**', `**Yukii#6969**`)
+      .addField('**Author**', `**Azariel#0004}**`)
       .addField('**Servercount**', `**${yukii.guilds.size} Servers**`)
       .addField('**DiscordJS**', `**${dependencies['discord.js']}**`)
       .addField('**NodeJS**', `**${bot_info.NodeJS}**`)
-      .addField('**RAM Usage**', `**${ram} GB**`)
-      .addField('**Uptime**', `** **`)
-      .addField('**Days**', `**${days}**`)
-      .addField('**Hours**', `**${hours}**`)
-      .addField('**Minutes**', `**${minutes}**`)
-      .addField('**Seconds**', `**${roundedseconds}**`)
+      .addField('**RAM Usage**', `**${ram} MB**`)
+      .addField('**Uptime**', `**${uptime}**`)
       .setFooter(`Requested by ${message.author.tag}`)
+
     message.channel.send(StatsEmbed)
   }
 }

@@ -6,7 +6,7 @@ module.exports = {
 
   execute (yukii, message) {
 
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setColor('#ff0000')
       .setTitle('***Kneesocks Bot Help***')
       .setThumbnail('https://i.imgur.com/SL1L9Bn.png')

@@ -11,7 +11,7 @@ module.exports = {
 
   async execute (yukii, message, args) {
 
-    const errormess = new Discord.RichEmbed()
+    const errormess = new Discord.MessageEmbed()
       .setColor('#ff0000')
       .setTitle(':warning:  **Error** :warning:')
       .setDescription('**Please use this Command in an NSFW Channel**')
@@ -24,7 +24,7 @@ module.exports = {
       }).then(posts => {
         const index = Math.floor(Math.random() * posts.length)
         const post = posts[index]
-        const embed = new Discord.RichEmbed()
+        const embed = new Discord.MessageEmbed()
           .setDescription(':white_check_mark:  ***Here are the Results*** :white_check_mark: ')
           .setColor('#ff0000')
           .addField('**Tag**', `**${args[0]}**`)
