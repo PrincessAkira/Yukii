@@ -21,8 +21,9 @@ module.exports = {
     totalSeconds %= 3600
     let minutes = Math.floor(totalSeconds / 60)
     let seconds = totalSeconds % 60
+    let roundedseconds = (totalSeconds).toFixed(0)
     const ram = (process.memoryUsage().rss / 1024 / 1024).toFixed(0)
-    let uptime = `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`
+    let uptime = `${days} days, ${hours} hours, ${minutes} minutes and ${roundedseconds} seconds`
 
     const StatsEmbed = new Discord.MessageEmbed()
       .setColor('#ff0000')
@@ -30,7 +31,7 @@ module.exports = {
       .setThumbnail('https://i.imgur.com/SL1L9Bn.png')
       .addField('**Name**', `**${bot_info.Name}**`)
       .addField('**Author**', `**Azariel#0004}**`)
-      .addField('**Servercount**', `**${yukii.guilds.size} Servers**`)
+      .addField('**Servercount**', `**${yukii.guilds.resolve.length} Servers**`)
       .addField('**DiscordJS**', `**${dependencies['discord.js']}**`)
       .addField('**NodeJS**', `**${bot_info.NodeJS}**`)
       .addField('**RAM Usage**', `**${ram} MB**`)
