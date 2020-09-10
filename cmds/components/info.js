@@ -30,7 +30,7 @@ module.exports = {
       .setTitle(':wrench:  **Bot Statistics** :wrench:')
       .setThumbnail('https://i.imgur.com/SL1L9Bn.png')
       .addField('**Name**', `**${bot_info.Name}**`)
-      .addField('**Author**', `**Azariel#0004}**`)
+      .addField('**Author**', `**Azariel#0004**`)
       .addField('**Servercount**', `**${yukii.guilds.resolve.length} Servers**`)
       .addField('**DiscordJS**', `**${dependencies['discord.js']}**`)
       .addField('**NodeJS**', `**${bot_info.NodeJS}**`)
