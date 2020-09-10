@@ -23,7 +23,7 @@ module.exports = {
     let seconds = totalSeconds % 60
     let roundedseconds = (totalSeconds).toFixed(0)
     const ram = (process.memoryUsage().rss / 1024 / 1024).toFixed(0)
-    let uptime = `${days} days, ${hours} hours, ${minutes} minutes and ${roundedseconds} seconds`
+    let uptime = `${days} days, ${hours} hours, ${minutes} minutes`
 
     const StatsEmbed = new Discord.MessageEmbed()
       .setColor('#ff0000')
