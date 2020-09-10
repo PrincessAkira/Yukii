@@ -8,6 +8,7 @@ const yukii = new Discord.Client({
 yukii.commands = new Discord.Collection()
 const {
   PREFIX,
+  APIKey,
   token,
 } = require('./settings.json')
 
@@ -51,9 +52,8 @@ yukii.on('ready', async () => {
 })
 
 /// API Stuff
-/*
-snekfetch.post(`https://space-bot-list.xyz/api/bots/"apiKey"`)
-  .set('Authorization', "your sbl api key")
-  .send({ guilds: yukii.guilds.size, users: yukii.users.size })
+
+snekfetch.post(`https://space-bot-list.xyz/api/bots/691622066713133155`)
+  .set('Authorization', APIKey)
+  .send({ guilds: yukii.guilds.cache.size, users: yukii.users.cache.size })
   .then(req => req.body);
-  */

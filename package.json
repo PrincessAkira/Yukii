@@ -28,6 +28,7 @@
     "node-memwatcher": "^0.1.4",
     "nodejs": "0.0.0",
     "snekfetch": "^4.0.4",
+    "spacebots": "^1.2.0",
     "standard": "14.3.4",
     "torrent-grabber": "1.0.2",
     "torrent-search-api": "2.1.3",
