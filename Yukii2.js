@@ -39,13 +39,10 @@ yukii.on('message', message => {
 yukii.on('ready', async () => {
   yukii.user.setActivity('Bot recode! ' + '| -k help')
   console.log(`Logged in as ${yukii.user.tag}!`)
+  snekfetch.post(`https://space-bot-list.xyz/api/bots/691622066713133155`)
+    .set('Authorization', APIKey)
+    .send({ guilds: yukii.guilds.cache.size, users: yukii.users.cache.size })
+    .then(req => req.body);
   // yukii.user.setActivity('in ' + `${yukii.guilds.size} Servers ` + '| Prefix: -k')
 
 })
-
-/// API Stuff
-
-snekfetch.post(`https://space-bot-list.xyz/api/bots/691622066713133155`)
-  .set('Authorization', APIKey)
-  .send({ guilds: yukii.guilds.cache.size, users: yukii.users.cache.size })
-  .then(req => req.body);

@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const fs = require('fs')
+const cronJob = require('cron')
 const snekfetch = require('snekfetch')
 const msFix = require('ms')
 const yukii = new Discord.Client({
@@ -39,6 +40,10 @@ yukii.on('message', message => {
 yukii.on('ready', async () => {
   yukii.user.setActivity('Bot recode! ' + '| -k help')
   console.log(`Logged in as ${yukii.user.tag}!`)
+  snekfetch.post(`https://space-bot-list.xyz/api/bots/691622066713133155`)
+    .set('Authorization', APIKey)
+    .send({ guilds: yukii.guilds.cache.size, users: yukii.users.cache.size })
+    .then(req => req.body)
   // yukii.user.setActivity('in ' + `${yukii.guilds.size} Servers ` + '| Prefix: -k')
   if (fs.existsSync('./restartMessage')) {
     let restartMessage = JSON.parse(fs.readFileSync('./restartMessage', 'utf8'))
@@ -51,9 +56,11 @@ yukii.on('ready', async () => {
   }
 })
 
-/// API Stuff
 
-snekfetch.post(`https://space-bot-list.xyz/api/bots/691622066713133155`)
-  .set('Authorization', APIKey)
-  .send({ guilds: yukii.guilds.cache.size, users: yukii.users.cache.size })
-  .then(req => req.body);
+const job = new CronJob('25 4,10,16,22 * * *', () => {
+    console.log("Task started")
+    yukii.emit('warn', 'Restart in 5 Minutes')
+    yukii.user.setActivity('Bot restarting!')
+  }
+)
+job.start()

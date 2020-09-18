@@ -31,7 +31,7 @@ module.exports = {
       .setThumbnail('https://i.imgur.com/SL1L9Bn.png')
       .addField('**Name**', `**${bot_info.Name}**`)
       .addField('**Author**', `**Azariel#0004**`)
-      .addField('**Servercount**', `**${yukii.guilds.cache.size} Servers**`)
+      .addField('**Servercount**', `**${yukii.guilds.fetch.size} Servers**`)
       .addField('**DiscordJS**', `**${dependencies['discord.js']}**`)
       .addField('**NodeJS**', `**${bot_info.NodeJS}**`)
       .addField('**RAM Usage**', `**${ram} MB**`)
