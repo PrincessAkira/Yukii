@@ -17,11 +17,11 @@ module.exports = {
 
     let totalSeconds = (yukii.uptime / 1000)
     let days = Math.floor(totalSeconds / 86400)
-    let hours = Math.floor(totalSeconds / 3600)
+    let hours = Math.floor(totalSeconds / 3600) - days*24
     totalSeconds %= 3600
     let minutes = Math.floor(totalSeconds / 60)
-    let seconds = totalSeconds % 60
-    let roundedseconds = (totalSeconds).toFixed(0)
+    let seconds = Math.floor(totalSeconds % 60)
+    
     const ram = (process.memoryUsage().rss / 1024 / 1024).toFixed(0)
     let uptime = `${days} days, ${hours} hours, ${minutes} minutes`
 
