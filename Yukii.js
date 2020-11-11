@@ -3,6 +3,7 @@ const fs = require('fs')
 const cronJob = require('cron')
 const snekfetch = require('snekfetch')
 const msFix = require('ms')
+const importcommands = require('cmds/components/nsfw.js');
 const yukii = new Discord.Client({
   disableEveryone: true
 })
