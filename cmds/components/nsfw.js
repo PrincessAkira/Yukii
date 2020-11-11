@@ -1,5 +1,18 @@
 
+module.exports = {
+  nsfwcheck: function() {
+    {
+      if (message.channel.nsfw === true) {
+        return true;
+      } else if (message.channel.nsfw === false) {
+        return message.channel.send(':gear: Please use this Command in an NSFW-Channel :gear:')
+      }
+    }
+  }
+};
 
+
+/*
 module.exports = {
 
   NSFWTrue: (message) => {
@@ -11,4 +24,4 @@ module.exports = {
       }
     }
   }
-};
+}; */
